@@ -1,4 +1,4 @@
-train: ./data/train/images
+train: ../train/images
 val: ../valid/images
 test: ../test/images
 
@@ -8,6 +8,6 @@ names: ['fire', 'objects', 'sky', 'smoke']
 roboflow:
   workspace: mikrosentinel
   project: mikrosentinel
-  version: 2
+  version: 3
   license: CC BY 4.0
-  url: https://universe.roboflow.com/mikrosentinel/mikrosentinel/dataset/2
+  url: https://universe.roboflow.com/mikrosentinel/mikrosentinel/dataset/3
