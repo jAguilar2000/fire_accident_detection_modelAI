@@ -53,8 +53,21 @@ def detect_from_image(image_path):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
+def type_object_cv2():
+    cap = cv2.VideoCapture(0)  # Usar cámara web (o cambiar a una IP)
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+        
+        print(type(frame))
+        cv2.imshow("Detección de Incendios/Intrusos", frame)
+        if cv2.waitKey(1) == 27:  # Salir con ESC
+            break
+
 if __name__ == "__main__":
     #train_model()     # Paso 1: Entrenar
     #validate_model()  # Paso 2: Validar
-    detect_live()     # Paso 3: Probar en vivo
+    #detect_live()     # Paso 3: Probar en vivo
     #detect_from_image("rio_portada.jpg")  # Probar con una imagen específica
+    type_object_cv2()
