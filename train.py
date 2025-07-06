@@ -10,19 +10,19 @@ def train_model():
         epochs=50,
         imgsz=640,
         batch=8,
-        name="fire_accident_detection"
+        name="fire_accident_detection_2"
     )
 
 # --- 2. Validación ---
 def validate_model():
-    model = YOLO("runs/detect/fire_accident_detection/weights/best.pt")  # Usa la mejor época
+    model = YOLO("runs/detect/fire_accident_detection_2/weights/best.pt")  # Usa la mejor época
     metrics = model.val()
     print(metrics)
 
 # --- 3. Prueba en tiempo real ---
 def detect_live():
-    model = YOLO("runs/detect/fire_accident_detection/weights/best.pt")
-    cap = cv2.VideoCapture(0)  # Usar cámara web (o cambiar a una IP)
+    model = YOLO("runs/detect/fire_accident_detection_2/weights/best.pt")
+    cap = cv2.VideoCapture(0 )  # Usar cámara web (o cambiar a una IP)
 
     while True:
         ret, frame = cap.read()
@@ -30,7 +30,7 @@ def detect_live():
             break
         
         # Detección
-        results = model(frame, conf=0.8)  # conf = umbral de confianza
+        results = model(frame, conf=0.75)  # conf = umbral de confianza
         annotated_frame = results[0].plot()  # Dibuja las detecciones
         
         cv2.imshow("Detección de Incendios/Intrusos", annotated_frame)
@@ -41,7 +41,7 @@ def detect_live():
     cv2.destroyAllWindows()
 
 def detect_from_image(image_path):
-    model = YOLO("runs/detect/fire_accident_detection/weights/best.pt")
+    model = YOLO("runs/detect/fire_accident_detection_2/weights/best.pt")
     image = cv2.imread(image_path)
     
     # Detección
@@ -68,6 +68,6 @@ def type_object_cv2():
 if __name__ == "__main__":
     #train_model()     # Paso 1: Entrenar
     #validate_model()  # Paso 2: Validar
-    #detect_live()     # Paso 3: Probar en vivo
+    detect_live()     # Paso 3: Probar en vivo
     #detect_from_image("rio_portada.jpg")  # Probar con una imagen específica
-    type_object_cv2()
+    #type_object_cv2()
