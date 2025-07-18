@@ -21,7 +21,7 @@ def validate_model():
 
 # --- 3. Prueba en tiempo real ---
 def detect_live():
-    model = YOLO("runs/detect/fire_accident_detection_2/weights/best.pt")
+    model = YOLO("runs/detect/fire_accident_detection_2/weights/best.pt").to(device="cuda")
     cap = cv2.VideoCapture(0 )  # Usar cámara web (o cambiar a una IP)
 
     while True:
