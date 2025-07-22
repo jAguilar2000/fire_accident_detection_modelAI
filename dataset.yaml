@@ -1,8 +1,0 @@
-# dataset.yaml
-path: ./data
-train: images/train
-val: images/val
-names:
-  0: fire
-  1: intruder
-  2: accident

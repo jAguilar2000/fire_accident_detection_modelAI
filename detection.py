@@ -1,7 +1,7 @@
 from ultralytics import YOLO
 
-model = YOLO("runs/detect/fire_accident_detection/weights/best.pt")
-
+model = YOLO("runs/detect/fire_accident_detection_2/weights/best.pt")
+model.to(device="cuda")
 def detect_frame_and_return(frame):
     results = model(frame, conf=0.8)
     result = results[0]
